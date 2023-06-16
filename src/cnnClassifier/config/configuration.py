@@ -6,6 +6,7 @@ from cnnClassifier.entity.config_entity import DataIngestionConfig
 from cnnClassifier.entity.config_entity import PrepareBaseModelConfig
 from cnnClassifier.entity.config_entity import PrepareCallbacksConfig
 from cnnClassifier.entity.config_entity import TrainingConfig
+from cnnClassifier.entity.config_entity import EvaluationConfig
 
 class ConfigurationManager:
     def __init__(self, 
@@ -77,3 +78,13 @@ class ConfigurationManager:
         )
 
         return training_config
+    
+    def get_validation_config(self) -> EvaluationConfig:
+        eval_config = EvaluationConfig(
+            path_of_model="artifacts/training/model.h5",
+            training_data= "artifacts/data_ingestion/Chicken-fecal-images",
+            all_params=self.params,
+            params_batch_size=self.params.BATCH_SIZE,
+            params_image_size=self.params.IMAGE_SIZE
+        )
+        return eval_config
