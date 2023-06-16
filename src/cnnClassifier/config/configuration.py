@@ -81,8 +81,8 @@ class ConfigurationManager:
     
     def get_validation_config(self) -> EvaluationConfig:
         eval_config = EvaluationConfig(
-            path_of_model="artifacts/training/model.h5",
-            training_data= "artifacts/data_ingestion/Chicken-fecal-images",
+            path_of_model=Path("artifacts/training/model.h5"),
+            training_data= Path("artifacts/data_ingestion/Chicken-fecal-images"),
             all_params=self.params,
             params_batch_size=self.params.BATCH_SIZE,
             params_image_size=self.params.IMAGE_SIZE
